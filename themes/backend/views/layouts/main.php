@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="language" content="en"/>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <link type='text/css' rel='stylesheet' href='<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css'/>
-
-
-    <?php //Yii::app()->bootstrap->register(); ?>
+   <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/bootstrap.css'); ?>
+   <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/bootstrap-responsive.css'); ?>
+   <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/yiistrap.css'); ?>
     <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/styles.css'); ?>
     <link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/common.css"/>
+ <?php //Yii::app()->bootstrap->register(); ?>
 
 </head>
 <body screen_capture_injected="true">
