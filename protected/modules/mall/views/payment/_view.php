@@ -5,7 +5,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('payment_sn')); ?>:</b>
-	<?php echo CHtml::encode($data->pay_sn); ?>
+	<?php echo CHtml::encode($data->payment_sn); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('money')); ?>:</b>
