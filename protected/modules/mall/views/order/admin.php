@@ -56,7 +56,7 @@ $this->breadcrumbs = array(
         ),
         array(
             'name' => 'create_time',
-            'value'=>'date("Y-m-d H:i;s",$data->create_time+8*3600)'
+            'value'=>'date("Y-m-d H:i:s",$data->create_time)'
         ),
 
         array(
