@@ -155,3 +155,9 @@ footer .powered{
 #item-form div[class="control-group bulk"]{
     text-align: center;
 }
+
+
+ table div,table input,table select{
+
+    width: 100px;
+}
