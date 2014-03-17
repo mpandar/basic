@@ -221,6 +221,10 @@ class UserModule extends CWebModule {
         $mailer->Host = F::sg('mail','server');
         $mailer->Port = F::sg('mail','port');
         $mailer->SMTPAuth = true;
+        if(F::sg('mail','ssl'))
+        {
+            $mailer->SMTPSecure = "ssl";
+        }
         $mailer->Username = F::sg('mail','user');
         $mailer->Password = F::sg('mail','password');
         $mailer->IsSMTP();
