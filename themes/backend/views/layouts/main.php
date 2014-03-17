@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="language" content="en"/>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <link type='text/css' rel='stylesheet' href='<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap.css'/>
+    <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/bootstrap.css'); ?>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.js"></script>
 
