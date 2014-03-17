@@ -194,7 +194,7 @@ a.online_ser{
 .nav_list li{
 	float:left;
 	width:110px;
-	margin-right:10px;
+
 	text-align:center;
 	height:36px;
 	line-height:36px;
@@ -230,15 +230,20 @@ a.online_ser{
 	margin-right:-770px;
 }
 .float_button a{
-	background:url(../image/hand.png) no-repeat right center;
+	background:url(../image/hand.png) no-repeat bottom center;
 	display:block;
-	margin-top:70px;
-	margin-left:40px;
-	height:40px;
-	width:50px;
-	padding-right:26px;
+	margin-top:67px;
+	margin-left:43px;
+	height:62px;
+	width:75px;
+	padding-right:9px;
 	text-align:center;
+
 }
+
+
+
+
 .warp_tab{
 	width:1180px;
 	margin:10px auto 0;
