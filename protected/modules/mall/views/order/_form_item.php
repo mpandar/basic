@@ -24,7 +24,7 @@
         ))?>
 </div>
 <div class="input-group space">
-    <div class="input-group-addon">请输入商品数量</div>
+    <div class="input-group-addon">商品数量</div>
     <input class="form-control form-control1" id="item-number" type="text"
            data-url='<?php echo CController::createUrl("checkStock") ?>'/>
 
@@ -47,17 +47,31 @@
             <input id="Sku_item_id" name="Sku[item_id][]" type="hidden" value="<?php echo $item->item_id ?>"/>
             <input id="Sku_sku_id" name="Sku[sku_id][]" type="hidden" value="<?php echo $ItemSku[$key1][$key2]->sku_id ?>"/>
             <input id="Item-number" name="Item-number[]" type="hidden" value="<?php echo $orderItem->quantity ?>"/>
-            <div>商品标题：<?php echo $item->title ?></div>
-            <div>商品属性：<?php  foreach (json_decode($orderItem->props_name, true) as $props) {
+            <table class="table table-striped table-bordered" id="tab">
+            <colgroup span="1" width="90px"></colgroup>
+            <tr>
+            <td>商品标题：</td>
+            <td><?php echo $item->title ?></td></tr>
+            <tr>
+            <td>商品属性：</td>
+            <td>
+            <?php  foreach (json_decode($orderItem->props_name, true) as $props) {
                     echo ($props).' ';
-                }?></div>
-            <div>商品数量：<?php echo $orderItem->quantity ?></div>
-                <div class="btn btn-danger" id="delete">Delete</div>
+                }?>
+             </td>
+             </tr>
+            <tr>
+            <td>商品数量：</td>
+            <td><?php echo $orderItem->quantity ?></td>
+            </tr>
+            </table>
+              <div class="btn btn-danger" id="delete">Delete</div>
+              <div id="add-button" class="btn btn-primary" style="float: right">Add</div>
             </div>
         <?php }
     }
-} ?></div>
-<div style="clear: both"></div>
-<div id="add-button" class="btn btn-primary" style="float: right">Add</div>
+} ?>
 <div style="clear: both"></div>
 
+<div style="clear: both"></div>
+</div>
