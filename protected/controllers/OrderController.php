@@ -85,65 +85,112 @@ class OrderController extends Controller
     public function actionCreate()
     {
         $model = new Order;
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-        if (!$_POST['delivery_address']) {
-            echo '<script>alert("您还没有添加收货地址！")</script>';
-            echo '<script type="text/javascript">history.go(-1)</script>';
-        } else {
+            // Uncomment the following line if AJAX validation is needed
+            // $this->performAjaxValidation($model);
+            if (!$_POST['delivery_address'] && !Yii::app()->user->isGuest) {
+                 echo '<script>alert("您还没有添加收货地址！")</script>';
+                 echo '<script type="text/javascript">history.go(-1)</script>';
+                 } else {
             if (isset($_POST)) {
+
                 $transaction = $model->dbConnection->beginTransaction();
                 try {
-                    $model->attributes = $_POST;
-                    $model->user_id = Yii::app()->user->id ? Yii::app()->user->id : '0';
-                    $model->create_time = time();
                     $cart = Yii::app()->cart;
-                    $cri = new CDbCriteria(array(
-                        'condition' => 'contact_id =' . $_POST['delivery_address'] . ' AND user_id = ' . Yii::app()->user->id
-                    ));
-                    $address = AddressResult::model()->find($cri);
-
+                    if(!Yii::app()->user->isGuest)
+                    {
+                        $model->attributes = $_POST;
+                        $model->user_id = Yii::app()->user->id ? Yii::app()->user->id : '0';
+                        $cri = new CDbCriteria(array(
+                            'condition' => 'contact_id =' . $_POST['delivery_address'] . ' AND user_id = ' . Yii::app()->user->id
+                        ));
+                        $address = AddressResult::model()->find($cri);
+                        $model->receiver_country = $address->country;
+                        $model->receiver_name = $address->contact_name;
+                        $model->receiver_state = $address->state;
+                        $model->receiver_city = $address->city;
+                        $model->receiver_district = $address->district;
+                        $model->receiver_address = $address->address;
+                        $model->receiver_zip = $address->zipcode;
+                        $model->receiver_mobile = $address->mobile_phone;
+                        $model->receiver_phone = $address->phone;
+                    }
+                    else
+                    {
+                        $address = $_POST['AddressResult'];
+                        $model->receiver_name = $address['contact_name'];
+                        $model->receiver_state = $address['state'];
+                        $model->receiver_city = $address['city'];
+                        $model->receiver_district = $address['district'];
+                        $model->receiver_address = $address['address'];
+                        $model->receiver_zip = $address['zipcode'];
+                        $model->receiver_mobile = $address['mobile_phone'];
+                        $model->receiver_phone = $address['phone'];
+                        $model ->payment_method_id= $_POST['payment_method_id'];
+                        $model ->memo = $_POST['memo'];
+                    }
+                    $model->create_time = time();
                     $model->order_id=F::get_order_id();
-                    $model->receiver_name = $address->contact_name;
-                    $model->receiver_country = $address->country;
-                    $model->receiver_state = $address->state;
-                    $model->receiver_city = $address->city;
-                    $model->receiver_district = $address->district;
-                    $model->receiver_address = $address->address;
-                    $model->receiver_zip = $address->zipcode;
-                    $model->receiver_mobile = $address->mobile_phone;
-                    $model->receiver_phone = $address->phone;
                     $model->total_fee = 0;
-                    foreach ($_POST['keys'] as $key){
-                        $item= $cart->itemAt($key);
-                        $model->total_fee += $item['quantity'] * $item['price'];
+                    if(!$cart->isEmpty())
+                    {
+                        foreach ($_POST['keys'] as $key){
+                            $item= $cart->itemAt($key);
+                            $model->total_fee += $item['quantity'] * $item['price'];
+                        }
+                    }else
+                    {
+                        $item = Item::model()->findBypk($_POST['item_id']);
+                        $model->total_fee = $item->price * $_POST['quantity'];
                     }
 
                     if ($model->save()) {
-                     foreach ($_POST['keys'] as $key){
-                             $item= $cart->itemAt($key);
-                         $sku=Sku::model()->findByPk($item['sku']['sku_id']);
-                         if($sku->stock<$item['quantity']){
-                             throw new Exception('stock is not enough!');
-                         }
-                         $sku->stock-=$item['quantity'];
-                         if(!$sku->save()) {
-                             throw new Exception('cut down stock fail');
-                         }
+                        if($cart->isEmpty())
+                        {
+                            $item = Item::model()->findBypk($_POST['item_id']);
+                            $sku = Sku::model()->findByPk($_POST['sku_id']);
+                            if($sku->stock < $_POST['quantity'])
+                            {
+                                throw new Exception('stock is not enough!');
+                            }
                             $OrderItem = new OrderItem;
                             $OrderItem->order_id = $model->order_id;
-                            $OrderItem->item_id = $item['item_id'];
-                            $OrderItem->title = $item['title'];
-                            $OrderItem->desc = $item['desc'];
-                            $OrderItem->props_name = $item['props_name'];
-                            $OrderItem->price = $item['price'];
-                            $OrderItem->quantity = $item['quantity'];
+                            $OrderItem->item_id = $item->item_id;
+                            $OrderItem->title = $item->title;
+                            $OrderItem->desc = $item->desc;
+                            $OrderItem->props_name = $item->props_name;
+                            $OrderItem->price = $item->price;
+                            $OrderItem->quantity = $_POST['quantity'];
                             $OrderItem->total_price = $OrderItem->quantity * $OrderItem->price;
                             if (!$OrderItem->save()) {
                                 throw new Exception('save order item fail');
                             }
-                       $cart->remove($key);
+                        }
+                        else
+                        {
+                             foreach ($_POST['keys'] as $key){
+                                $item= $cart->itemAt($key);
+                                 $sku=Sku::model()->findByPk($item['sku']['sku_id']);
+                                if($sku->stock<$item['quantity']){
+                                 throw new Exception('stock is not enough!');
+                                }
+                                 $sku->stock-=$item['quantity'];
+                                if(!$sku->save()) {
+                                 throw new Exception('cut down stock fail');
+                                 }
+                                $OrderItem = new OrderItem;
+                                $OrderItem->order_id = $model->order_id;
+                                $OrderItem->item_id = $item['item_id'];
+                                $OrderItem->title = $item['title'];
+                                $OrderItem->desc = $item['desc'];
+                                $OrderItem->props_name = $item['props_name'];
+                                $OrderItem->price = $item['price'];
+                                $OrderItem->quantity = $item['quantity'];
+                                $OrderItem->total_price = $OrderItem->quantity * $OrderItem->price;
+                                if (!$OrderItem->save()) {
+                                    throw new Exception('save order item fail');
+                                }
+                               $cart->remove($key);
+                             }
                         }
                     } else {
                         throw new Exception('save order fail');
@@ -151,13 +198,12 @@ class OrderController extends Controller
                     $transaction->commit();
                     $this->redirect(array('success'));
                 } catch (Exception $e) {
-                    $transaction->rollBack();
+                    $transaction->rollBack();var_dump($model->getErrors());exit;
                     $this->redirect(array('fail'));
 
+                     }
                 }
             }
-        }
-
     }
     public function actionFail()
     {
