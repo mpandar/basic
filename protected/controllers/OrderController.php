@@ -117,6 +117,7 @@ class OrderController extends Controller
                     else
                     {
                         $address = $_POST['AddressResult'];
+                        $model->user_id = '0';
                         $model->receiver_name = $address['contact_name'];
                         $model->receiver_state = $address['state'];
                         $model->receiver_city = $address['city'];
