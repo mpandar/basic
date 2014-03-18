@@ -196,7 +196,7 @@ Yii::app()->clientScript->registerCoreScript('jquery');
         </div>
     </div>
 
-
+    <?php $imageHelper=new ImageHelper(); ?>
     <div class="box">
         <div class="box-title container_24">商品列表</div>
         <div class="box-content cart container_24">
@@ -221,8 +221,10 @@ Yii::app()->clientScript->registerCoreScript('jquery');
                     }
                     ?>
                     <tr><?php
+                            $picUrl=$imageHelper->thumb('70','70',$item->getMainPic());
+                            $picUrl=yii::app()->baseUrl. $picUrl;
                         ?>
-                        <td><?php echo CHtml::image($item->getMainPic(), $item->title, array('width' => '80px', 'height' => '80px')); ?></td>
+                        <td><?php echo CHtml::image($picUrl, $item->title, array('width' => '80px', 'height' => '80px')); ?></td>
                         <td><?php echo $item->title; ?></td>
                         <td><?php echo  empty($item->sku) ? '' : implode(';', json_decode($item->sku->props_name, true)); ?></td>
                         <td><?php echo $item->getPrice(); ?></td>
