@@ -100,7 +100,7 @@ class PluginBase extends CBaseController {
         if(Yii::app()->request->enableCsrfValidation){
             array_merge($params,array(Yii::app()->request->csrfTokenName => Yii::app()->request->csrfToken));
         }
-		if(!$action){
+		if($action){
 			$url = Yii::app()->createUrl('/plugin/plugin/index', array_merge($params, array('id' => $this->identify, 'action' => $action)));
 		}else{
 			$url = Yii::app()->createUrl('/plugin/plugin/index', array_merge($params, array('id' => $this->identify)));
