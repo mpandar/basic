@@ -191,8 +191,8 @@ $imageHelper=new ImageHelper();
                                               <div class="modal-content clearfix" style="width:200px;height:150px;border:1px solid black;padding:10px 10px;" id="myModal-1-content">
                                               <s id="mymodal-1-png" class="pull-left"></s> <span class="pull-left">成功加入购物车！</span>
 
-                                               <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button">×</button>
-                                               <button class="btn btn-success center-block" aria-hidden="true" data-dismiss="modal">确定</btn>
+                                               <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button"></button>
+                                               <button class="btn btn-success center-block" aria-hidden="true" data-dismiss="modal">确定</button>
                                               </div><!-- /.modal-content -->
                                           </div><!-- /.modal-dialog -->
                                       </div>
@@ -202,8 +202,8 @@ $imageHelper=new ImageHelper();
                                             <div class="modal-content clearfix" style="width:200px;height:150px;border:1px solid black;padding:10px 10px;" id="myModal-1-content">
                                             <s id="mymodal-1-png" class="pull-left"></s> <span class="pull-left">成功加入收藏夹！</span>
 
-                                             <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button">×</button>
-                                             <button class="btn btn-success center-block" aria-hidden="true" data-dismiss="modal">确定</btn>
+                                             <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button"></button>
+                                             <button class="btn btn-success center-block" aria-hidden="true" data-dismiss="modal">确定</button>
                                             </div><!-- /.modal-content -->
                                         </div><!-- /.modal-dialog -->
                                     </div>
