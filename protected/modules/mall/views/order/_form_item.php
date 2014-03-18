@@ -47,13 +47,13 @@
             <input id="Sku_item_id" name="Sku[item_id][]" type="hidden" value="<?php echo $item->item_id ?>"/>
             <input id="Sku_sku_id" name="Sku[sku_id][]" type="hidden" value="<?php echo $ItemSku[$key1][$key2]->sku_id ?>"/>
             <input id="Item-number" name="Item-number[]" type="hidden" value="<?php echo $orderItem->quantity ?>"/>
-            <table class="table table-striped table-bordered" id="tab">
-            <colgroup span="1" width="90px"></colgroup>
+          <!--  <table class="table table-striped table-bordered" id="tab">
+
             <tr>
-            <td>商品标题：</td>
+            <th>商品标题：</th>
             <td><?php echo $item->title ?></td></tr>
             <tr>
-            <td>商品属性：</td>
+           <td>商品属性：</td>
             <td>
             <?php  foreach (json_decode($orderItem->props_name, true) as $props) {
                     echo ($props).' ';
@@ -64,9 +64,29 @@
             <td>商品数量：</td>
             <td><?php echo $orderItem->quantity ?></td>
             </tr>
-            </table>
-              <div class="btn btn-danger" id="delete">Delete</div>
-              <div id="add-button" class="btn btn-primary" style="float: right">Add</div>
+            </table>   -->
+             <div style="width:100%;height:50px;"><div id="add-button" class="btn btn-primary" style="float: right;width:135px;margin:15px 33px;">Add</div></div>
+              <table class="table table-striped table-bordered" id="tab">
+               <thead id="head-title">
+               <tr>
+                          <th>商品标题：</th>
+                          <th>商品数量：</th>
+                          <th>商品属性：</th>
+                          <th>操作：</th>
+                </tr>
+                </thead>
+
+                <tr id="example-tr">
+                         <td><?php echo $item->title ?></td>
+                         <td> <?php  foreach (json_decode($orderItem->props_name, true) as $props) {
+                                                 echo ($props).' ';
+                                             }?></td>
+                         <td><?php echo $orderItem->quantity ?></td>
+                         <td><div class="btn btn-danger" id="delete">Delete</div> </td>
+                </tr>
+                </table>
+
+
             </div>
         <?php }
     }

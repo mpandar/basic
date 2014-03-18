@@ -11,9 +11,9 @@ $(document).ready(function () {
         $(window.parent.document).find('#item-table').append(html + '</tr>');
         $(this).closest('tr').remove();
     });
-    $('#ItemList').on('click', '#delete', function () {
-        var div = $(this).parent();
-        div.remove();
+    $('#tab').on('click', '#delete', function () {
+            var tbody = $(this).parents("tbody");
+            tbody.remove();
     });
     $('.search-button').click(function () {
         $('.search-form').toggle();
@@ -128,14 +128,14 @@ $(document).ready(function () {
                         else {
                             $('#stockError').remove();
                             sku.parent().remove();
-                            var html = '<div>';
+                            var html = '<tbody><tr><td>';
                             html += '<input id="Sku_item_id" name="Sku[item_id][]" type="hidden" value="' + $('#selectItem').val() + '"/>';
                             html += '<input id="Sku_sku_id" name="Sku[sku_id][]" type="hidden" value="' + $('#Sku_item').val() + '"/>';
                             html += '<input id="Item-number" name="Item-number[]" type="hidden" value="' + number + '"/>';
-                            html += '<div>商品标题：' + $("#selectItem  option:selected").html() + '</div>';
-                            html += '<div>商品属性：' + $("#Sku_item  option:selected").html() + '</div>';
-                            html += '<div>商品数量：' + number + '</div>' + '<div class="btn btn-danger" id="delete">Delete</div></div>';
-                            $('#ItemList').append(html);
+                            html +=  $("#selectItem  option:selected").html() + '</td><td>'+ $("#Sku_item  option:selected").html() +'</td><td>'+number +'</td><td> <div class="btn btn-danger" id="delete">Delete</div></td></tr></tobody>';
+
+
+                            $('#head-title').after(html);
                         }
                     });
                 }
