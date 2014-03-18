@@ -15,6 +15,16 @@ $(document).ready(function () {
         var div = $(this).parent();
         div.remove();
     });
+    $('.search-button').click(function () {
+        $('.search-form').toggle();
+        return false;
+    });
+    $('.search-form form').submit(function () {
+        $.fn.yiiGridView.update('shipping-grid', {
+            data: $(this).serialize()
+        });
+        return false;
+    });
     $('#add_prop').dynoTable({
         removeClass: '.row-remover', //class for the clickable row remover
         cloneClass: '.row-cloner', //class for the clickable row cloner
@@ -67,16 +77,7 @@ $(document).ready(function () {
         showPopup($(this).data('url'));
     });
 
-    $('.search-button').click(function () {
-        $('.search-form').toggle();
-        return false;
-    });
-    $('.search-form form').submit(function () {
-        $.fn.yiiGridView.update('shipping-grid', {
-            data: $(this).serialize()
-        });
-        return false;
-    });
+
     $('#item-number').change(function () {
         var skuValue = $('#Sku_item');
         if (skuValue.val() != '' && $('#selectItem').val() != '') {
