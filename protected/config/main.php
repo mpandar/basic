@@ -175,7 +175,7 @@ return array(
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
         ),
-        /*
+
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
@@ -196,7 +196,7 @@ return array(
                 '<_m:\w+>/<_c:\w+>/<_a:\w+>' => '<_m>/<_c>/<_a>',
             ),
         ),
-        */
+
         /* setup message translation method */
         'messages' => array(
             'class' => 'CPhpMessageSource',
