@@ -8,7 +8,7 @@ $this->breadcrumbs = array(
 <div class="box">
     <div class="box-title">delivery address</div>
     <div class="box-content">
-        <?php echo $this->renderPartial('_form', array('model'=>$model));?>
+
         <span id="item">已保存有效的地址</span>
         <?php $this->widget('zii.widgets.grid.CGridView', array(
             'dataProvider'=>$dataProvider,
@@ -43,6 +43,8 @@ $this->breadcrumbs = array(
                 ),
             ),
         )); ?>
-
+        <div>
+            <a href="create"><button class="btn btn-success center-block"> 创建新地址</button></a>
+        </div>
     </div>
 </div>

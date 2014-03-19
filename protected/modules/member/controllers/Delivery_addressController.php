@@ -64,7 +64,7 @@ class Delivery_addressController extends Controller {
                 $this->redirect(array('admin'));
         };
 
-        $this->render('admin', array(
+        $this->render('create', array(
             'model' => $model,
         ));
     }
