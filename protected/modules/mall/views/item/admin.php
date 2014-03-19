@@ -5,11 +5,11 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => '创建商品', 'icon' => 'plus', 'url' => array('create')),
+//    array('label' => '创建商品', 'icon' => 'plus', 'url' => array('create')),
 );
 ?>
 
-    <h3>管理商品</h3>
+    <h3>管理商品</h3><?php echo CHtml::link('<div class="btn btn-primary">创建商品</div>', 'create', array('create')); ?>
 <?php
 $form = $this->beginWidget('CActiveForm', array(
     'id' => 'item-form',

@@ -11,7 +11,7 @@ $this->breadcrumbs = array(
         &lt;&gt;</b>
     or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
-<?php echo CHtml::link('<div class="btn btn-primary">Create Order</div>', '#', array('class' => 'search-button',)); ?>
+<?php echo CHtml::link('<div class="btn btn-primary">Create Order</div>', 'create', array('create')); ?>
 <div class="search-form" style="display:none">
     <?php $this->renderPartial('select_user', array(
         'users' => $users,

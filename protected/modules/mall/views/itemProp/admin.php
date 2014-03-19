@@ -5,12 +5,12 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => '创建商品属性', 'icon' => 'plus', 'url' => array('create')),
+//    array('label' => '创建商品属性', 'icon' => 'plus', 'url' => array('create')),
 );
 ?>
 
 <h1>管理商品属性</h1>
-
+<?php echo CHtml::link('<div class="btn btn-primary">创建商品属性</div>', 'create', array('create')); ?>
 <?php
 $this->widget('bootstrap.widgets.TbGridView', array(
     'id' => 'item-prop-grid',

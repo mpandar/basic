@@ -47,6 +47,11 @@ return array(
         //    'alias' => realpath(__DIR__ . '/../extensions/aliasRealPath'), // change it to fit your need
     ),
     'modules' => array(
+        'plugin' => array(
+            'class' => 'application.modules.plugin.PluginModule', # 模块的路径别名
+            'pluginRoot' => 'application.Plugins',   # 配置插件存放的目录,确保该目录可读写,默认为 'application.Plugins'
+            'layout' => '//layouts/main',            # 管理面板布局文件,确保管理界面风格和整站一致,默认为 '//layouts/main'
+        ),
         'comments' => array(
             //you may override default config for all connecting models
             'defaultModelConfig' => array(
@@ -133,6 +138,9 @@ return array(
     'components' => array(
         'seo' => array(
             'class' => 'application.modules.yiiseo.components.SeoExt',
+        ),
+        'plugin' => array(
+            'class' => 'application.modules.plugin.components.HookRender', # HookRender 文件的路径别名
         ),
         'user' => array(
             // enable cookie-based authentication

@@ -5,12 +5,12 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => '创建分类', 'icon' => 'plus', 'url' => array('create')),
+//    array('label' => '创建分类', 'icon' => 'plus', 'url' => array('create')),
 );
 ?>
 
 <h1>管理分类</h1>
-
+<?php echo CHtml::link('<div class="btn btn-primary">创建商品分类</div>', 'create', array('create')); ?>
 <div class="well well-large">
     <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'id' => 'horizontalForm',
