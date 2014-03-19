@@ -148,7 +148,7 @@ $imageHelper=new ImageHelper();
             </div>
             <input type="hidden" id="item_id" name="item_id" value="<?php echo $item->item_id; ?>" />
             <input type="hidden" id="props" name="props" value="" />
-            <div class="deal_add_car" data-url="<?php echo Yii::app()->createUrl('cart/add'); ?>"><a href="javascript:void(0)">加入购物车</a></div>
+            <div  class="deal_add_car" data-url="<?php echo Yii::app()->createUrl('cart/add'); ?>"><a href="javascript:void(0)" id="addToShopCart" data-toggle="modal" data-target="#myModal-1">加入购物车</a></div>
             <div class="deal_add"><?php echo CHtml::link("立即购买", 'javascript:void(0);')?></div>
             <div class="deal_collect" data-url="<?php echo Yii::app()->createUrl('member/wishlist/addWish'); ?>" ><a href="javascript:void(0)">立即收藏</a></div>
      </form>
@@ -402,7 +402,7 @@ $imageHelper=new ImageHelper();
                 $('#qty').val(parseInt($('#qty').val()) + 1);
             }
         });
-        $('.deal_add_car').click(function() {
+      /** $('.deal_add_car').click(function() {
             var selectProps = $('.prop-select,.img-prop-select');
             if (selectProps.length < $('.deal_size p').length) {
                 $('.deal_size').addClass('prop-div-select');
@@ -413,12 +413,12 @@ $imageHelper=new ImageHelper();
                             var num=$('.shopping_car').children().text();
                             num=parseInt(num)+1;
                             $('.shopping_car').children().text(num);
-                            showPopup(response.status);
+                            //showPopup(response.status);
                         }else
-                            showPopup(response.status);
+                           // showPopup(response.status);
                 },'json');
             }
-        });
+        });*/
         $('.deal_collect').click(function() {
                 $.post($(this).data('url'), $('#item_id').serialize(), function(response) {
                     if(response.status=='exist'){
