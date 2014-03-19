@@ -4,11 +4,8 @@ $this->breadcrumbs=array(
     UserModule::t("Login"),
 );
 ?>
-<?php CHtml::$afterRequiredLabel = '';?>
 
 <div class="login_box">
-
-
 <?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
 
     <div class="success">
@@ -17,14 +14,13 @@ $this->breadcrumbs=array(
 
 <?php endif; ?>
 
- <?php //echo UserModule::t("Please fill out the following form with your login credentials:"); ?>
 <div class="login_ct">
     <div class="login"  id="log-box-div">
 
         <div class="login_form">
         <?php echo CHtml::beginForm(); ?>
 
-   <p class="note"><?php //echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?>
+        <p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?>
 
         <?php echo CHtml::errorSummary($model); ?>
 

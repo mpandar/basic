@@ -48,9 +48,9 @@ return array(
     ),
     'modules' => array(
         'plugin' => array(
-            'class' => 'application.modules.plugin.PluginModule', # 模块的路径别名
-            'pluginRoot' => 'application.Plugins',   # 配置插件存放的目录,确保该目录可读写,默认为 'application.Plugins'
-            'layout' => '//layouts/main',            # 管理面板布局文件,确保管理界面风格和整站一致,默认为 '//layouts/main'
+            'class' => 'application.modules.plugin.PluginModule', # Module path alias
+            'pluginRoot' => 'application.plugin',   # Folder for plugins,make sure it is writeable.
+            'layout' => '//layouts/main',            # layout of admin control panel.
         ),
         'comments' => array(
             //you may override default config for all connecting models
@@ -136,11 +136,11 @@ return array(
     ),
     // application components
     'components' => array(
+        'plugin' => array(
+            'class' => 'application.modules.plugin.components.HookRender', # HookRender path alias
+        ),
         'seo' => array(
             'class' => 'application.modules.yiiseo.components.SeoExt',
-        ),
-        'plugin' => array(
-            'class' => 'application.modules.plugin.components.HookRender', # HookRender 文件的路径别名
         ),
         'user' => array(
             // enable cookie-based authentication
@@ -175,6 +175,7 @@ return array(
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
         ),
+        /*
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
@@ -195,7 +196,7 @@ return array(
                 '<_m:\w+>/<_c:\w+>/<_a:\w+>' => '<_m>/<_c>/<_a>',
             ),
         ),
-
+        */
         /* setup message translation method */
         'messages' => array(
             'class' => 'CPhpMessageSource',

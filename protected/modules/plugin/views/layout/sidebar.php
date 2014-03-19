@@ -2,8 +2,8 @@
 Yii::app()->clientScript->registerCoreScript('jquery');
 $this->beginContent($this->adminLayout);
 ?>
-<div>
-	<div id="sidebar-nav">
+<div class="clearfix">
+	<div  id="sidebar-nav">
 		<?php
 		$this->widget('bootstrap.widgets.TbNav', array(
 			'type' => TbHtml::NAV_TYPE_LIST,
