@@ -88,6 +88,7 @@ $imageHelper=new ImageHelper();
              data-sku-value='<?php echo json_encode($skus); ?>' data-sku-id="<?php if(isset($skuId))echo implode(',',$skuId);else echo $item->item_id; ?>">
             <?php
             $propImgs = CHtml::listData($item->propImgs, 'item_prop_value', 'pic');
+
             $itemProps = $propValues = array();
             foreach ($item->category->itemProps as $itemProp) {
                 $itemProps[$itemProp->item_prop_id] = $itemProp;
@@ -95,7 +96,7 @@ $imageHelper=new ImageHelper();
                     $propValues[$propValue->prop_value_id] = $propValue;
                 }
             }
-            $pvids = json_decode($item->props);
+            $pvids = json_decode($item->props);var_dump($pvids);
             foreach ($pvids as $pid => $pvid) {
                 if (isset($itemProps[$pid]) && $itemProps[$pid]->is_sale_prop) {
                     $itemProp = $itemProps[$pid];
@@ -143,7 +144,7 @@ $imageHelper=new ImageHelper();
                     <label class="qty_num" id="num"><?php echo $item->min_number; ?></label>
                 <input type="hidden" id="qty" name="qty" value="<?php echo $item->min_number; ?>" />
                     <a href="javascript:void(0)" class="add"></a></span>
-            <span>（库存剩余 <label id="stock"><?php echo $item->stock;var_dump($item->stock); ?></label> 台)</span>
+            <span>（库存剩余 <label id="stock"><?php echo $item->stock;?></label> 台)</span>
 
         </div>
         <input type="hidden" id="item_id" name="item_id" value="<?php echo $item->item_id; ?>" />
@@ -487,14 +488,13 @@ $imageHelper=new ImageHelper();
                 $.post($(this).data('url'), $('#deal').serialize(), function(response) {
                     if(response.status=='success'){
                         var num=$('.shopping_car').children().text();
-                        var num1=$('.stock').children().text();
-                        num=parseInt(num)+1;
-                        num1=parseInt(num1)-1;
-                        $('.shopping_car').children().text(num);
-                        $('.stock').children().text(num1);
-                      //  showPopup(response.status);
 
-                        $(function ()
+                        num=parseInt(num)+1;
+
+                        $('.shopping_car').children().text(num);
+
+                      //  showPopup(response.status);
+                      $(function ()
                         { $("#myModal-1").modal();
                         });
                     }else
@@ -514,6 +514,7 @@ $imageHelper=new ImageHelper();
         });
         $('.deal_add').click(function() {
             var selectProps = $('.prop-select,.img-prop-select');
+           // var_dump(selectProps);
             if (selectProps.length < $('.deal_size p').length) {
                 $('.deal_size').addClass('prop-div-select');
             } else {
