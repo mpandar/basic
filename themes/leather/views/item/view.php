@@ -150,7 +150,7 @@ $imageHelper=new ImageHelper();
             <input type="hidden" id="props" name="props" value="" />
             <div  class="deal_add_car" data-url="<?php echo Yii::app()->createUrl('cart/add'); ?>"><a href="javascript:void(0)" id="addToShopCart" data-toggle="modal" data-target="#myModal-1">加入购物车</a></div>
             <div class="deal_add" data-url="<?php echo Yii::app()->createUrl('user/user/isLogin'); ?>" ><?php echo CHtml::link("立即购买", 'javascript:void(0);')?></div>
-            <div  class="deal_collect" data-url="<?php echo Yii::app()->createUrl('member/wishlist/addWish'); ?>" ><a data-toggle="modal" data-target="#myModal-2" href="javascript:void(0)">立即收藏</a></div>
+            <div  class="deal_collect" data-url="<?php echo Yii::app()->createUrl('member/wishlist/addWish'); ?>" ><a data-toggle="modal"  href="javascript:void(0)">立即收藏</a></div>
             <!-- Modal -->
             <div tabindex="-1" class="modal fade in" id="myModal" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
                 <div class="modal-dialog">
@@ -553,12 +553,24 @@ $(function () {
         }
     });
     $('.deal_collect').click(function() {
+      
         $.post($(this).data('url'), $('#item_id').serialize(), function(response) {
             if(response.status=='exist'){
                 showPopup('已收藏过该商品');
             }else
-                showPopup(response.status) ;
+               // showPopup(response.status) ;
+            if (response.status == 'login') {
+                $('#myModal-2').modal('show');
+            } else {
+//                     $('#loginPage')
+                $('#myModal').modal('show');
+            }
+               // $('#myModal').modal('show');
         },'json');
+       // $(function ()
+        //{ $("#myModal-2").modal();
+       // });
+
         });
         $('.deal_add').click(function() {
             var selectProps = $('.prop-select,.img-prop-select');
