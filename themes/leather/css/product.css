@@ -325,17 +325,8 @@
 .login_form{
 	margin:40px;
 }
-#RegistrationForm_verifyCode{
-    display:block;
-    position: absolute;
-    top: 355px;
-    left:100px;
-}
-#code-div{
-    position: absolute;
-    top: 400px;
-    left: 120px;
-}
+
+
 .form_c{
 	overflow:hidden;
 	margin:20px 0 0;
@@ -345,10 +336,7 @@
     margin:20px 0 0;
 
 }
-#submit-div{
-    position: absolute;
-    top: 440px;
-}
+
 .form_cd input{
     float:left;
     margin-left:15px;
@@ -495,3 +483,14 @@
     width:555px;
 }
 
+div.form div.error label:first-child, div.form label.error, div.form span.error {
+
+    margin: 5px 23px;
+}
+#RegistrationForm_verifyCode{
+    margin: -25px 1px 1px 75px;
+}
+#code-div{
+    margin: 10px 75px;
+}
+#code-div #yw0{margin:0px 5px 5px 0px;}

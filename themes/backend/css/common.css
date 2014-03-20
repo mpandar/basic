@@ -123,9 +123,7 @@ Pseudo ::after element
 .tab-content > .active {
     display: block;
 }
-.tab-content > .tab-pane {
-    display: none;
-}
+
 .fade.in {
     opacity: 1;
 }

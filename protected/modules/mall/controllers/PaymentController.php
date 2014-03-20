@@ -33,7 +33,7 @@ class PaymentController extends Controller {
 		{
 			$model->attributes=$_POST['Payment'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->pay_id));
+				$this->redirect(array('view','id'=>$model->payment_id));
 		}
 
 		$this->render('create',array(
@@ -57,7 +57,7 @@ class PaymentController extends Controller {
 		{
 			$model->attributes=$_POST['Payment'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->pay_id));
+				$this->redirect(array('view','id'=>$model->payment_id));
 		}
 
 		$this->render('update',array(

@@ -16,7 +16,7 @@ class m140312_082506_modify_order_table extends CDbMigration
 	// Use safeUp/safeDown to do migration with transaction
 	public function safeUp()
 	{
-          $this->addColumn('order','order_ship_id','big int');
+          $this->addColumn('order','order_ship_id','bigint');
 //        $this->dropForeignKey('item_id','order_item');
 	}
 

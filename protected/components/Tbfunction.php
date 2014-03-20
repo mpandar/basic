@@ -26,6 +26,10 @@ class Tbfunction {
 
     public function getUser($user_id)
     {
+        if($user_id == 0 || $user_id == '0')
+        {
+            return '匿名购买';
+        }
         $user = Users::model()->findByAttributes(array('id' => $user_id));
         return $user->username;
     }

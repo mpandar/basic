@@ -1,32 +1,31 @@
 <div class="view">
+     <b><?php echo CHtml::encode($data->getAttributeLabel('order_id')); ?>  :</b>
+    <?php echo CHtml::link(CHtml::encode($data->order_id), array('view', 'id'=>$data->order_id)); ?>
+    <br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('order_id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->order_id), array('view', 'id'=>$data->order_id)); ?>
-	<br />
+     <b> <?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?> :</b>
+    <?php echo CHtml::encode($data->user_id); ?>
+    <br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
-	<br />
+     <b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
+    <?php echo CHtml::encode($data->status); ?>
+    <br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
-	<?php echo CHtml::encode($data->status); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('pay_status')); ?>:</b>
+    <?php echo CHtml::encode($data->pay_status); ?>
+    <br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('pay_status')); ?>:</b>
-	<?php echo CHtml::encode($data->pay_status); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('ship_status')); ?>:</b>
+    <?php echo CHtml::encode($data->ship_status); ?>
+    <br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ship_status')); ?>:</b>
-	<?php echo CHtml::encode($data->ship_status); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('refund_status')); ?>:</b>
+    <?php echo CHtml::encode($data->refund_status); ?>
+    <br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('refund_status')); ?>:</b>
-	<?php echo CHtml::encode($data->refund_status); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('total_fee')); ?>:</b>
-	<?php echo CHtml::encode($data->total_fee); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('total_fee')); ?>:</b>
+    <?php echo CHtml::encode($data->total_fee); ?>
+    <br />
 
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ship_fee')); ?>:</b>

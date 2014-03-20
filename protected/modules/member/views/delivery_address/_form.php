@@ -6,12 +6,14 @@
         $form=$this->beginWidget('CActiveForm', array(
             'id'=>'address-result-form',
             'enableAjaxValidation'=>false,
+            'enableClientValidation'=>true
         ));
     } else {
         $form=$this->beginWidget('CActiveForm', array(
             'id'=>'address-result-form',
             'action' => 'create',
             'enableAjaxValidation'=>false,
+            'enableClientValidation'=>true
         ));
     }
  ?>

@@ -164,3 +164,17 @@ footer .powered{
  .summary{
      text-align: right;
  }
+.filter-container input{
+    height:30px;
+}
+.span12 table{
+    border:1px solid lightgray;
+}
+#yw0 th{
+    border:1px solid lightgray;
+    text-align:center;
+    width:200px;
+}
+#yw0 td{
+    border:1px solid lightgray;
+}
