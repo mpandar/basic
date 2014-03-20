@@ -177,6 +177,10 @@ $imageHelper=new ImageHelper();
                                 </div>
                             </div>
                         </form>
+                        </div>
+                    </div>
+                </div>
+
 
 
         </form>
@@ -596,7 +600,7 @@ function llogin() {
         return
     }
 
-    var url= "http://yincart/user/login/llogin";
+    var url= "../user/login/llogin";
     var data = { username: $("#user").val(), password: $("#password").val() };
     url=url+"?username="+$("#user").val();
     url=url+"&password="+$("#password").val();
@@ -629,7 +633,7 @@ function stateChanged(url)
     }
 
     function stateChanged(url)
-    {alert("1");
+    {
     $.post(url, function(response){
         if (response.status == 'login') {
             $('#deal').submit();
@@ -669,7 +673,6 @@ function GetXmlHttpObject()
         $.post(url, function(response){
 
             if (response.status == 'login') {
-                alert("3");
                 $('#deal').submit();
             } else {
                 alert("Wrong username or password!");
