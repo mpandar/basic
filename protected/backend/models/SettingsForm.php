@@ -25,6 +25,7 @@ class SettingsForm extends CFormModel
         'port' => '',
         'user' => '',
         'password' => '',
+        'ssl'=>'',
     );
     public $filter = array(
         'priceLower'=>'',
@@ -51,6 +52,7 @@ class SettingsForm extends CFormModel
                 'mainKwrds' => 'Default Keywords (Meta Tag)',
                 'mainDescr' => 'Default Description (Meta Tag)',
                 'statistics' => 'Third-party statistical code',
+                'ssl' => 'SSL',
             );
 
         if(array_key_exists($key, $keys))
