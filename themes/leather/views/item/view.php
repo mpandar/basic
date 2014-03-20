@@ -141,9 +141,10 @@ $imageHelper=new ImageHelper();
             <span>我要买</span><span class="deal_num_c">
                     <a href="javascript:void(0)" class="minus"></a>
                     <label class="qty_num" id="num"><?php echo $item->min_number; ?></label>
-                    <input type="hidden" id="qty" name="qty" value="<?php echo $item->min_number; ?>" />
+                <input type="hidden" id="qty" name="qty" value="<?php echo $item->min_number; ?>" />
                     <a href="javascript:void(0)" class="add"></a></span>
-            <span>（库存剩余 <label id="stock"><?php echo $item->stock; ?></label> 台)</span>
+            <span>（库存剩余 <label id="stock"><?php echo $item->stock;var_dump($item->stock); ?></label> 台)</span>
+
         </div>
         <input type="hidden" id="item_id" name="item_id" value="<?php echo $item->item_id; ?>" />
         <input type="hidden" id="props" name="props" value="" />
@@ -486,10 +487,13 @@ $imageHelper=new ImageHelper();
                 $.post($(this).data('url'), $('#deal').serialize(), function(response) {
                     if(response.status=='success'){
                         var num=$('.shopping_car').children().text();
+                        var num1=$('.stock').children().text();
                         num=parseInt(num)+1;
+                        num1=parseInt(num1)-1;
                         $('.shopping_car').children().text(num);
+                        $('.stock').children().text(num1);
                       //  showPopup(response.status);
-                       // $("#myModal-1").modal({show:false});
+
                         $(function ()
                         { $("#myModal-1").modal();
                         });
@@ -520,7 +524,7 @@ $imageHelper=new ImageHelper();
                         $('#deal').submit();
                     } else {
 //                     $('#loginPage')
-                       // $('#myModal').modal('show');
+                        $('#myModal').modal('show');
                     }
                 }, 'json');
             }
