@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 03 月 20 日 03:34
+-- 生成日期: 2014 年 03 月 20 日 03:38
 -- 服务器版本: 5.6.12-log
 -- PHP 版本: 5.4.12
 
@@ -5104,6 +5104,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `ship_time` int(10) unsigned DEFAULT NULL COMMENT '发货时间',
   `create_time` int(10) unsigned DEFAULT NULL,
   `update_time` int(10) unsigned DEFAULT NULL,
+  `order_ship_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `fk_order_payment_method1_idx` (`payment_method_id`),
   KEY `fk_order_shipping_method1_idx` (`shipping_method_id`)
@@ -5113,18 +5114,18 @@ CREATE TABLE IF NOT EXISTS `order` (
 -- 转存表中的数据 `order`
 --
 
-INSERT INTO `order` (`order_id`, `user_id`, `status`, `pay_status`, `ship_status`, `refund_status`, `comment_status`, `total_fee`, `ship_fee`, `pay_fee`, `payment_method_id`, `shipping_method_id`, `receiver_name`, `receiver_country`, `receiver_state`, `receiver_city`, `receiver_district`, `receiver_address`, `receiver_zip`, `receiver_mobile`, `receiver_phone`, `memo`, `pay_time`, `ship_time`, `create_time`, `update_time`) VALUES
-(67, 6, 0, 0, 0, 0, 0, '123.00', '0.00', '0.00', 0, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1389146901, NULL),
-(68, 6, 0, 0, 0, 0, 0, '123.00', '0.00', '0.00', 1, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1389147860, NULL),
-(20140122022687, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '110000', '110100', '110101', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390382118, NULL),
-(20140122197154, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '120000', '120100', '120221', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390380827, NULL),
-(20140122461421, 6, 0, 0, 0, 0, 0, '233.00', '0.00', '0.00', 1, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1390382426, NULL),
-(20140122510267, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '130000', '130300', '130302', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390380881, NULL),
-(20140122738254, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '230000', '230400', '230402', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390381960, NULL),
-(20140122750469, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '210000', '210400', '210402', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390381520, NULL),
-(20140122945806, 6, 0, 0, 0, 0, 0, '123.00', '0.00', '0.00', 1, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1390382181, NULL),
-(20140207642329, 1, 0, 0, 0, 0, 0, '1299.00', '0.00', '0.00', 1, 0, '小明', NULL, '130000', '130300', '130304', '11111', '1111111', '13338888899', '021-877777222', '', NULL, NULL, 1391749153, NULL),
-(20140212007840, 1, 0, 0, 0, 0, 0, '1299.00', '0.00', '0.00', 1, 0, '小明', NULL, '130000', '130300', '130304', '11111', '1111111', '13338888899', '021-877777222', '', NULL, NULL, 1392190289, NULL);
+INSERT INTO `order` (`order_id`, `user_id`, `status`, `pay_status`, `ship_status`, `refund_status`, `comment_status`, `total_fee`, `ship_fee`, `pay_fee`, `payment_method_id`, `shipping_method_id`, `receiver_name`, `receiver_country`, `receiver_state`, `receiver_city`, `receiver_district`, `receiver_address`, `receiver_zip`, `receiver_mobile`, `receiver_phone`, `memo`, `pay_time`, `ship_time`, `create_time`, `update_time`, `order_ship_id`) VALUES
+(67, 6, 0, 0, 0, 0, 0, '123.00', '0.00', '0.00', 0, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1389146901, NULL, NULL),
+(68, 6, 0, 0, 0, 0, 0, '123.00', '0.00', '0.00', 1, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1389147860, NULL, NULL),
+(20140122022687, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '110000', '110100', '110101', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390382118, NULL, NULL),
+(20140122197154, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '120000', '120100', '120221', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390380827, NULL, NULL),
+(20140122461421, 6, 0, 0, 0, 0, 0, '233.00', '0.00', '0.00', 1, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1390382426, NULL, NULL),
+(20140122510267, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '130000', '130300', '130302', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390380881, NULL, NULL),
+(20140122738254, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '230000', '230400', '230402', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390381960, NULL, NULL),
+(20140122750469, 7, 0, 0, 0, 0, 0, '0.00', '0.00', '0.00', 0, 1, 'asd', NULL, '210000', '210400', '210402', 'asdas', 'dasd', '', '', '', NULL, NULL, 1390381520, NULL, NULL),
+(20140122945806, 6, 0, 0, 0, 0, 0, '123.00', '0.00', '0.00', 1, 0, '小明', NULL, '150000', '150200', '150202', '213.21', '1420', '13566666666', '00000000', '', NULL, NULL, 1390382181, NULL, NULL),
+(20140207642329, 1, 0, 0, 0, 0, 0, '1299.00', '0.00', '0.00', 1, 0, '小明', NULL, '130000', '130300', '130304', '11111', '1111111', '13338888899', '021-877777222', '', NULL, NULL, 1391749153, NULL, NULL),
+(20140212007840, 1, 0, 0, 0, 0, 0, '1299.00', '0.00', '0.00', 1, 0, '小明', NULL, '130000', '130300', '130304', '11111', '1111111', '13338888899', '021-877777222', '', NULL, NULL, 1392190289, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -5174,7 +5175,7 @@ INSERT INTO `order_item` (`order_item_id`, `order_id`, `item_id`, `title`, `desc
 
 CREATE TABLE IF NOT EXISTS `order_log` (
   `log_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) DEFAULT NULL,
+  `order_id` bigint(20) DEFAULT NULL,
   `op_name` varchar(45) DEFAULT NULL,
   `log_text` longtext,
   `action_time` int(10) unsigned DEFAULT NULL,
@@ -5355,6 +5356,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `author` varchar(32) DEFAULT NULL,
   `user_id` int(11) DEFAULT '0',
   `language` varchar(45) DEFAULT NULL,
+  `pic_url` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_post_author` (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -5363,9 +5365,9 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- 转存表中的数据 `post`
 --
 
-INSERT INTO `post` (`id`, `store_id`, `category_id`, `title`, `url`, `source`, `summary`, `content`, `tags`, `status`, `views`, `create_time`, `update_time`, `author`, `user_id`, `language`) VALUES
-(1, 0, 0, 'test', NULL, NULL, NULL, 'sssss', 'test, demo', 2, 0, 1393317486, 1393317486, NULL, 1, NULL),
-(2, 0, 0, 'demo', NULL, NULL, NULL, 'demo', 'demo', 2, 0, 1393318093, 1393318093, NULL, 1, NULL);
+INSERT INTO `post` (`id`, `store_id`, `category_id`, `title`, `url`, `source`, `summary`, `content`, `tags`, `status`, `views`, `create_time`, `update_time`, `author`, `user_id`, `language`, `pic_url`) VALUES
+(1, 0, 0, 'test', NULL, NULL, NULL, 'sssss', 'test, demo', 2, 0, 1393317486, 1393317486, NULL, 1, NULL, NULL),
+(2, 0, 0, 'demo', NULL, NULL, NULL, 'demo', 'demo', 2, 0, 1393318093, 1393318093, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6326,7 +6328,10 @@ CREATE TABLE IF NOT EXISTS `tbl_migration` (
 
 INSERT INTO `tbl_migration` (`version`, `apply_time`) VALUES
 ('m000000_000000_base', 1371931053),
-('m130707_154857_modify_item_img_table', 1373266900);
+('m130707_154857_modify_item_img_table', 1373266900),
+('m140312_082506_modify_order_table', 1395286682),
+('m140319_051343_modify_oderLog_table', 1395286682),
+('m140320_011404_modify_post_table', 1395286682);
 
 -- --------------------------------------------------------
 
