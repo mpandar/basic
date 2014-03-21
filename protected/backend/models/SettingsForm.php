@@ -2,7 +2,12 @@
 
 class SettingsForm extends CFormModel
 {
- 
+    public  $logo = '';
+
+    public function  getLogo()
+    {
+        return $this->logo;
+    }
     public $site = array(
         'name' => '',
         'domain' => '',
@@ -11,6 +16,7 @@ class SettingsForm extends CFormModel
         'defaultCurrency' => '',
         'about' => '',
         'statistics' => '',
+        'logo' => '',
     );
     public $seo = array(
         'mainTitle' => '',
@@ -53,6 +59,7 @@ class SettingsForm extends CFormModel
                 'mainDescr' => 'Default Description (Meta Tag)',
                 'statistics' => 'Third-party statistical code',
                 'ssl' => 'SSL',
+                'logo' => 'Logo',
             );
 
         if(array_key_exists($key, $keys))
@@ -76,19 +83,35 @@ class SettingsForm extends CFormModel
     public function setAttributes($values,$safeOnly=true) 
     { 
         if(!is_array($values)) 
-            return; 
- 
+            return;
+        $logoUrl = '';
+        $tempValues = $values;
+        foreach($tempValues as $tempCategory => $tempValues)
+        {
+            if($tempCategory === 'logo')
+            {
+                $logoUrl = $tempValues;
+            }
+        }
         foreach($values as $category=>$values) 
-        { 
+        {
             if(isset($this->$category)) {
                 $cat = $this->$category;
+                if(!is_array($values))
+                {
+                    continue;
+                }
                 foreach ($values as $key => $value) {
                     if(isset($cat[$key])){
                         $cat[$key] = $value;
                     }
                 }
+                if($category === 'site')
+                {
+                    $cat['logo'] = $logoUrl;
+                }
                 $this->$category = $cat;
             }
-        } 
+        }
     }
 }
