@@ -294,7 +294,7 @@
 	margin:5px 200px;
 	background:#F6F5F5;
 	width:750px;
-    height: 630px;
+    height: 700px;
 	float:left;
     position: relative;
 
@@ -483,12 +483,14 @@
     width:555px;
 }
 
-div.form div.error label:first-child, div.form label.error, div.form span.error {
+/*div.form div.error label:first-child, div.form label.error, div.form span.error {
 
     margin: 5px 23px;
 }
+*/
 #RegistrationForm_verifyCode{
-    margin: -25px 1px 1px 75px;
+    margin: -23px 1px 1px 75px;
+
 }
 #code-div{
     margin: 10px 75px;
