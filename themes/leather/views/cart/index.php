@@ -14,6 +14,7 @@ Yii::app()->clientScript->registerCoreScript('jquery');
     });
 
 </script>
+<?php $imageHelper=new ImageHelper(); ?>
 <div class="box">
     <div class="box-title container_24">购物车</div>
     <div class="box-content cart container_24">
@@ -50,7 +51,11 @@ Yii::app()->clientScript->registerCoreScript('jquery');
                             echo CHtml::hiddenField('props[]', empty($item->sku) ? '' : implode(';', json_decode($item->sku->props, true)),  array('id' => '','class' => 'props'));?>
                         </td>
                         <td><?php echo CHtml::checkBox('position[]', false, array('value' => $key, 'data-url' => Yii::app()->createUrl('cart/getPrice'))); ?></td>
-                        <td><a href="<?php echo $itemUrl; ?>"><?php echo CHtml::image($item->getMainPic(), $item->title, array('width' => '80px', 'height' => '80px')); ?></a></td>
+                        <?php
+                            $picUrl=$imageHelper->thumb('70','70',$item->getMainPic());
+                            $picUrl=yii::app()->baseUrl. $picUrl;
+                        ?>
+                        <td><a href="<?php echo $itemUrl; ?>"><?php echo CHtml::image($picUrl, $item->title, array('width' => '80px', 'height' => '80px')); ?></a></td>
                         <td><?php echo CHtml::link($item->title, $itemUrl); ?></td>
                         <td><?php echo empty($item->sku) ? '' : implode(';', json_decode($item->sku->props_name, true)); ?></td>
                         <td><div id="Singel-Price"><?php echo $item->getPrice(); ?></div></td>
