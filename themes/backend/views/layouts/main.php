@@ -9,6 +9,7 @@
    <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/bootstrap-responsive.css'); ?>
    <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/yiistrap.css'); ?>
     <?php Yii::app()->getClientScript()->registerCssFile(F::themeUrl() . '/css/styles.css'); ?>
+    <?php Yii::app()->getClientScript()->registerCoreScript('jquery'); ?>
     <link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/common.css"/>
     <link type="text/css" rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/common.css"/>
  <?php //Yii::app()->bootstrap->register(); ?>
@@ -108,7 +109,7 @@
 </div>
 <!-- page -->
 <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/common.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.js"></script>
+
 <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.dynotable.js"></script>
