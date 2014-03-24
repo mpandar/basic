@@ -31,12 +31,5 @@
 
 </div>
 
-<div class="grid_21 omega">
 
-    <div class="float">
-        <div class="float_button">
-            <a href="">联系<br/>在线客服</a>
-        </div>
-    </div>
-</div>
 <?php $this->endContent(); ?>

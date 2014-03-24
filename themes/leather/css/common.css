@@ -429,10 +429,6 @@ a.online_ser{
 	zoom:1;
 }
 
-
-
-
-
 .product_price_n{
     font-size:18px;
     font-weight:700;
@@ -456,7 +452,6 @@ a.online_ser{
     font-size:18px;
     font-weight:700;
     color:#d50000;
-
     font-family:"仿宋";
 
 }
@@ -472,8 +467,7 @@ a.online_ser{
 .product_price_v1{
     background:#d50000;
     padding:1px 5px;
-
-    width: 60px;
+    width: 64px;
     margin-top: -10px;
     color: white;
 
