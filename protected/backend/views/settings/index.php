@@ -20,7 +20,10 @@ echo CHtml::beginForm();
  
 $tabs = array();
 $i = 0;
-    foreach ($model->attributes as $category => $values):?>
+    foreach ($model->attributes as $category => $values):
+        if($category === 'logo')
+            continue;
+        ?>
         <li<?php echo !$i?' class="active"':''?>><a href="#<?php echo $category?>" data-toggle="tab"><?php echo ucfirst($category)?></a></li>
     <?php 
     $i ++;
@@ -29,7 +32,11 @@ $i = 0;
     <div class="tab-content">
         <?php 
         $i = 0;
-        foreach ($model->attributes as $category => $values):?>
+//        var_dump($model->attributes);
+        foreach ($model->attributes as $category => $values):
+            if($category === 'logo')
+                continue;
+            ?>
             <div class="tab-pane<?php echo !$i?' active':''?>" id="<?php echo $category?>">
                 <?php
                 $this->renderPartial(
