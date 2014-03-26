@@ -66,7 +66,7 @@ class Tbfunction {
     }
 
     public function ReturnShipMethod(){
-        return array('' => '请选择', '1' => '平邮', '2' => '快递', '3' => 'EMS');
+        return array( '1' => '平邮', '2' => '快递', '3' => 'EMS');
     }
 
     public function ReturnYesOrNo(){
