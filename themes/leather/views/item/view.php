@@ -181,28 +181,6 @@ $imageHelper=new ImageHelper();
                     </div>
                 </div>
 
-            <div tabindex="-1" class="modal fade in" id="myModal-3" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
-                <div class="modal-dialog">
-                    <div class="modal-content" >
-
-                        <form role="form" id="log-out-box">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="log-out-close">×</button>
-                            <div id="warning-load" >
-                                <div id="logo">你没登录请先登录</div>
-
-
-                                <div class="row ">
-
-                                    <button type="button" class="btn btn-warning" onclick="window.open('/basic/user/login')">登陆</button>
-
-                                </div>
-
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
 
         </form>
@@ -213,6 +191,33 @@ $imageHelper=new ImageHelper();
 
 </form>
 </div>
+
+<form action="#" method="post" class="deal_info" id="deal1">
+ <div tabindex="-1" class="modal fade in" id="myModal-3" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content" >
+
+                        <form role="form" id="log-out-box">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="log-out-close">×</button>
+                            <div id="warning-load" >
+                                <div id="logo">演示商城</div>
+
+                                <div class="user">
+                                    <div> 用户名：</div>
+                                    <input class="txt form-control" id="user" name="user" type="text" placeholder="请输入用户名"/>
+                                </div>
+                                <div id="ajax"></div>
+                                <div class="user">
+                                    <div> 密码：</div>
+                                    <input class="txt form-control" id="password" name="password" type="password" placeholder="请输入密码"/>
+                                </div>
+                           <button id="log-btn-div"  name="button" type="button" onclick="llogin1()" class="btn-success btn">登录</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+ </form>
 <!-- Modal -->
 <div tabindex="-1" class="modal fade in" id="myModal-1" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
     <div class="modal-dialog">
@@ -648,6 +653,7 @@ function llogin() {
 //        xmlHttp.send();
 }
 
+
 function stateChanged(url)
 {
     var xmlHttp
@@ -750,4 +756,131 @@ function GetXmlHttpObject()
         }
         return xmlHttp;
     }
+
+
+
+
+    //    function test() {
+    //        window.open("http://yincart/user/login/test?username="+$("#user").val()+"&password="+$("#password").val());
+    //    }
+    function llogin1() {
+        xmlHttp=GetXmlHttpObject();
+        if (xmlHttp==null)
+        {
+            alert ("Browser does not support HTTP Request")
+            return
+        }
+
+        var url= "../user/login/llogin";
+        var data = { username: $("#user").val(), password: $("#password").val() };
+        url=url+"?username="+$("#user").val();
+        url=url+"&password="+$("#password").val();
+        xmlHttp.onreadystatechange=stateChanged(url);
+    //        xmlHttp.open("POST",url,true);
+    //        xmlHttp.send();
+    }
+
+
+    function stateChanged(url)
+    {
+        var xmlHttp
+        //    function test() {
+        //        window.open("http://yincart/user/login/test?username="+$("#user").val()+"&password="+$("#password").val());
+        //    }
+        function llogin() {
+            xmlHttp=GetXmlHttpObject();
+            if (xmlHttp==null)
+            {
+                alert ("Browser does not support HTTP Request")
+                return
+            }
+
+            var url= "http://yincart/user/login/llogin";
+    //        var data = { username: $("#user").val(), password: $("#password").val() };
+            url=url+"?username="+$("#user").val();
+            url=url+"&password="+$("#password").val();
+            xmlHttp.onreadystatechange=stateChanged(url);
+    //        xmlHttp.open("POST",url,true);
+    //        xmlHttp.send();
+        }
+
+
+
+
+        function stateChanged(url)
+        {
+        $.post(url, function(response){
+            if (response.status == 'login') {
+                $('#deal1').submit();
+            } else {
+                alert("Wrong username or password!");
+            }
+        }, 'json');
+
+    //            document.getElementById("user").innerHTML=xmlHttp.responseText;
+        //$("#myModal").css("display","none");
+        //      }
+    }
+
+
+    function GetXmlHttpObject()
+    {
+        var xmlHttp=null;
+
+        try
+        {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch (e)
+        {
+            // Internet Explorer
+            try
+            {
+                xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e)
+            {
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }
+            $.post(url, function(response){
+
+                if (response.status == 'login') {
+                    $('#deal1').submit();
+                } else {
+                    alert("Wrong username or password!");
+                }
+            }, 'json');
+
+    //            document.getElementById("user").innerHTML=xmlHttp.responseText;
+            //$("#myModal").css("display","none");
+            //      }
+        }
+
+        function GetXmlHttpObject()
+        {
+            var xmlHttp=null;
+
+            try
+            {
+                // Firefox, Opera 8.0+, Safari
+                xmlHttp=new XMLHttpRequest();
+            }
+            catch (e)
+            {
+                // Internet Explorer
+                try
+                {
+                    xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+                }
+                catch (e)
+                {
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+            return xmlHttp;
+        }
 </script>
