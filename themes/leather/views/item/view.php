@@ -181,6 +181,28 @@ $imageHelper=new ImageHelper();
                     </div>
                 </div>
 
+            <div tabindex="-1" class="modal fade in" id="myModal-3" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content" >
+
+                        <form role="form" id="log-out-box">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="log-out-close">×</button>
+                            <div id="warning-load" >
+                                <div id="logo">你没登录请先登录</div>
+
+
+                                <div class="row ">
+
+                                    <button type="button" class="btn btn-warning" onclick="window.open('/basic/user/login')">登陆</button>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
         </form>
@@ -552,7 +574,7 @@ $(function () {
                     $('.shopping_car').children().text(num);
                     showPopup(response.status);
                 }else
-                    showPopup(response.status);
+                   showPopup(response.status);
             },'json');
         }
     });
@@ -560,15 +582,20 @@ $(function () {
       
         $.post($(this).data('url'), $('#item_id').serialize(), function(response) {
             if(response.status=='exist'){
-                showPopup('已收藏过该商品');
+               showPopup('已收藏过该商品');
+               // $('#myModal-2').modal('show');
             }else
-               // showPopup(response.status) ;
-            if (response.status == 'login') {
-                $('#myModal-2').modal('show');
-            } else {
+            { // showPopup(response.status) ;
+            if (response.status == 'not login')
+                $('#myModal-3').modal('show');
+               // $('#myModal-2').modal('show');
+             else {
 //                     $('#loginPage')
-                $('#myModal').modal('show');
+                $('#myModal-2').modal('show');
+              //  $('#myModal-3').modal('show');
             }
+            }
+
                // $('#myModal').modal('show');
         },'json');
        // $(function ()
@@ -644,6 +671,9 @@ function stateChanged(url)
 //        xmlHttp.send();
     }
 
+
+
+
     function stateChanged(url)
     {
     $.post(url, function(response){
@@ -658,6 +688,7 @@ function stateChanged(url)
     //$("#myModal").css("display","none");
     //      }
 }
+
 
 function GetXmlHttpObject()
 {
