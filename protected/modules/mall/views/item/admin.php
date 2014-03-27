@@ -25,6 +25,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
     'dataProvider' => $model->search(),
     'filter' => $model,
     'selectableRows' => 2,
+    'enableHistory' => 'true',
     'columns' => array(
         array(
             'class' => 'CCheckBoxColumn',

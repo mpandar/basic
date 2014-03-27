@@ -21,6 +21,7 @@ $this->breadcrumbs = array(
     'id' => 'order-grid',
     'dataProvider' => $model->search(),
     'filter' => $model,
+    'enableHistory' => 'true',
     'columns' => array(
 
         'order_id',

@@ -76,6 +76,7 @@
                 <?php echo $form->labelEx($Order,'order_ship_id'); ?>
                 <?php echo $form->textField($Order,'order_ship_id'); ?>
                 <?php echo $form->error($Order,'order_ship_id'); ?>
+                <?php echo CHtml::hiddenField('backurl',Yii::app()->request->urlReferrer)?>
             </div>
             <?php
             echo TbHtml::formActions(array(
