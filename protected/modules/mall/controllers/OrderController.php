@@ -385,7 +385,7 @@ class OrderController extends Controller
             $order->ship_time = time();
             $order->ship_status = 1;
             $order->save();
-            $this->redirect(array('/mall/order/admin'));
+            $this->redirect($_POST['backurl']);
         }
         else
         {

@@ -55,9 +55,9 @@ class ItemController extends MallBaseController
         foreach($skus as $sk => $sku)
         {
             Sku::model()->deleteAllByAttributes(array('item_id' => $item->item_id));
-        }
-
+        }        var_dump(Yii::app()->request->urlReferrer);
         Item::model()->deleteByPk($id);
+        $this->redirect(Yii::app()->request->urlReferrer);
     }
     /**
      * Updates a particular model.
