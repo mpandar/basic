@@ -6,8 +6,8 @@
 <?php
 $this->breadcrumbs=array(
 	'Newsletter Subscribers'=>array('index'),
-	$model->subscriber_id=>array('view','id'=>$model->subscriber_id),
 	'Update',
+    $model->subscriber_id,
 );
 
 $this->menu=array(
