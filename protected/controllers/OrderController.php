@@ -132,7 +132,7 @@ class OrderController extends Controller
                     $model->create_time = time();
                     $model->order_id=F::get_order_id();
                     $model->total_fee = 0;
-                    if(!$cart->isEmpty())
+                    if(isset($_POST['keys']))
                     {
                         foreach ($_POST['keys'] as $key){
                             $item= $cart->itemAt($key);
@@ -145,7 +145,7 @@ class OrderController extends Controller
                     }
 
                     if ($model->save()) {
-                        if($cart->isEmpty())
+                        if(empty($_POST['keys']))
                         {
                             $item = Item::model()->findBypk($_POST['item_id']);
                             $sku = Sku::model()->findByPk($_POST['sku_id']);
@@ -158,7 +158,8 @@ class OrderController extends Controller
                             $OrderItem->item_id = $item->item_id;
                             $OrderItem->title = $item->title;
                             $OrderItem->desc = $item->desc;
-                            $OrderItem->props_name = $item->props_name;
+                            $OrderItem->pic = $item->getMainPic();
+                            $OrderItem->props_name = $sku->props_name;
                             $OrderItem->price = $item->price;
                             $OrderItem->quantity = $_POST['quantity'];
                             $OrderItem->total_price = $OrderItem->quantity * $OrderItem->price;
@@ -183,7 +184,8 @@ class OrderController extends Controller
                                 $OrderItem->item_id = $item['item_id'];
                                 $OrderItem->title = $item['title'];
                                 $OrderItem->desc = $item['desc'];
-                                $OrderItem->props_name = $item['props_name'];
+                                $OrderItem->pic = $item->getMainPic();
+                                $OrderItem->props_name = $sku['props_name'];
                                 $OrderItem->price = $item['price'];
                                 $OrderItem->quantity = $item['quantity'];
                                 $OrderItem->total_price = $OrderItem->quantity * $OrderItem->price;

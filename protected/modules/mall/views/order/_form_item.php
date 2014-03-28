@@ -70,8 +70,8 @@
                <thead id="head-title">
                <tr>
                           <th>商品标题：</th>
-                          <th>商品数量：</th>
                           <th>商品属性：</th>
+                          <th>商品数量：</th>
                           <th>操作：</th>
                 </tr>
                 </thead>

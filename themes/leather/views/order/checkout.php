@@ -213,7 +213,7 @@ Yii::app()->clientScript->registerCoreScript('jquery');
                 $cart = Yii::app()->cart;
                 if (isset($item)) {
                     $item->getId();
-                    if($cart->isEmpty())
+                    if($keys==null)
                     {
                         echo CHtml::hiddenField('sku_id', $item->sku->sku_id);
                         echo CHtml::hiddenField('item_id', $item->sku->item_id);
