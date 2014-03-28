@@ -413,7 +413,7 @@ $imageHelper=new ImageHelper();
                             var num=$('.shopping_car').children().text();
                             num=parseInt(num)+1;
                             $('.shopping_car').children().text(num);
-                            showPopup(response.status);
+                            $('#myModal').modal('show');
                         }else
                             showPopup(response.status);
                 },'json');

@@ -5,7 +5,6 @@ class CartController extends YController
 
     public function actionIndex()
     {
-
         $this->render('index', array('cart' => Yii::app()->cart));
     }
 
@@ -13,10 +12,12 @@ class CartController extends YController
     {
         $item = $this->loadItem();
         $quantity = empty($_POST['qty']) ? 1 : intval($_POST['qty']);
-        if(Yii::app()->cart->put($item, $quantity))
+        if(Yii::app()->cart->put($item, $quantity)){
             echo json_encode(array('status' => 'success'));
-        else
+        }
+        else{
             echo json_encode(array('status' => 'success'));
+        }
     }
 
     public function actionUpdate()

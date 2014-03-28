@@ -195,6 +195,7 @@ $imageHelper=new ImageHelper();
 <div tabindex="-1" class="modal fade in" id="myModal-1" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content clearfix" style="width:200px;height:150px;border:1px solid black;padding:10px 10px;" id="myModal-2-content">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <s id="mymodal-1-png" class="pull-left"></s> <span class="pull-left">成功加入购物车！</span>
 
             <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button"></button>
@@ -248,30 +249,6 @@ $imageHelper=new ImageHelper();
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
-
-                                 <!-- Modal -->
-                                      <div tabindex="-1" class="modal fade in" id="myModal-1" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
-                                          <div class="modal-dialog">
-                                              <div class="modal-content clearfix" style="width:200px;height:150px;border:1px solid black;padding:10px 10px;" id="myModal-1-content">
-                                              <s id="mymodal-1-png" class="pull-left"></s> <span class="pull-left">成功加入购物车！</span>
-
-                                               <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button"></button>
-                                               <button class="btn btn-success center-block" aria-hidden="true" data-dismiss="modal">确定</button>
-                                              </div><!-- /.modal-content -->
-                                          </div><!-- /.modal-dialog -->
-                                      </div>
-               <!-- Modal -->
-                                    <div tabindex="-1" class="modal fade in" id="myModal-2" role="dialog" aria-hidden="false" aria-labelledby="myModalLabel" style="display: none;">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content clearfix" style="width:200px;height:150px;border:1px solid black;padding:10px 10px;" id="myModal-1-content">
-                                            <s id="mymodal-1-png" class="pull-left"></s> <span class="pull-left">成功加入收藏夹！</span>
-
-                                             <button class="close pull-right" aria-hidden="true" data-dismiss="modal" type="button"></button>
-                                             <button class="btn btn-success center-block" aria-hidden="true" data-dismiss="modal">确定</button>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div>
-
 
 <div class="pd_l container_24">
     <div class="pd_l_fl grid_5">
@@ -550,9 +527,9 @@ $(function () {
                     var num=$('.shopping_car').children().text();
                     num=parseInt(num)+1;
                     $('.shopping_car').children().text(num);
-                    showPopup(response.status);
+                    $('#myModal-1').modal('show');
                 }else
-                    showPopup(response.status);
+                    showPopup(failed);
             },'json');
         }
     });
@@ -570,12 +547,10 @@ $(function () {
                 $('.deal_size').addClass('prop-div-select');
             } else {
                 $('.deal_size').removeClass('prop-div-select');
-//                $('#deal').submit();
                 $.post($(this).data('url'), function(response){
                     if (response.status == 'login') {
                         $('#deal').submit();
                     } else {
-//                     $('#loginPage')
                         $('#myModal').modal('show');
                     }
                 }, 'json');
