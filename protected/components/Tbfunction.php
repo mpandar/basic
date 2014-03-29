@@ -111,7 +111,11 @@ class Tbfunction {
         return $shipMethod[$ship_method];
     }
 
-
+    public function showShipDisabled($ship_status)
+    {
+        $shipStatus = array('0'=>' ','1'=>' disabled');
+        return $shipStatus[$ship_status];
+    }
 
     public function showStatus($status){
         $Status=array('0'=>'未提交','1'=>'有效');
