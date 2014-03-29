@@ -52,6 +52,9 @@ class Tbfunction {
         return array('0' => '无效', '1' => '有效');
     }
 
+    public function ReturnOrderStatus(){
+        return array('0' => '未提交', '1' => '已提交');
+    }
 
     public function ReturnPayStatus(){
         return array('0' => '待支付', '1' => '已支付');
@@ -112,6 +115,11 @@ class Tbfunction {
 
     public function showStatus($status){
         $Status=array('0'=>'未提交','1'=>'有效');
+        return $Status[$status];
+    }
+
+    public function showOrderStatus($status){
+        $Status=array('0'=>'未提交','1'=>'已提交');
         return $Status[$status];
     }
 
