@@ -146,12 +146,7 @@ class WishlistController extends Controller {
         if (isset($_GET['Wishlist']))
             $model->attributes = $_GET['Wishlist'];
 
-        $dataProvider = new CActiveDataProvider('Wishlist',array('criteria'=>array(
-            'condition'=>'user_id='.Yii::app()->user->id,
-        ),));
-
         $this->render('admin', array(
-            'dataProvider' => $dataProvider,
             'model' => $model,
         ));
     }
