@@ -12,11 +12,12 @@ class CartController extends YController
     {
         $item = $this->loadItem();
         $quantity = empty($_POST['qty']) ? 1 : intval($_POST['qty']);
+        var_dump(Yii::app()->cart->put($item, $quantity));exit;
         if(Yii::app()->cart->put($item, $quantity)){
             echo json_encode(array('status' => 'success'));
         }
         else{
-            echo json_encode(array('status' => 'success'));
+            echo json_encode(array('status' => 'failed'));
         }
     }
 
