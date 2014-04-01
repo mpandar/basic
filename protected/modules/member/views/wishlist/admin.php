@@ -13,7 +13,7 @@ $this->breadcrumbs = array(
 $url=Yii::app()->baseUrl.'/item/';
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'wishlist-grid',
-    'dataProvider' => $model->search(),
+    'dataProvider' => $dataProvider,
 //    'filter' => $model,
     'columns' => array(
         array(

@@ -11,18 +11,22 @@ $this->breadcrumbs = array(
         <?php
         $this->widget('zii.widgets.grid.CGridView', array(
             'id' => 'order-grid',
-            'dataProvider' => $model->search(),
+            'dataProvider' => $model->MyOrderSearch(),
             'filter' => $model,
             'columns' => array(
                 'order_id',
                 array(
                     'name' => 'status',
-                    'value' => 'Tbfunction::showStatus($data->status)',
-                    'filter' => Tbfunction::ReturnStatus(),
+                    'value' => 'Tbfunction::showOrderStatus($data->status)',
+                    'filter' => Tbfunction::ReturnOrderStatus(),
                 ),
                 'total_fee',
                 'ship_fee',
                 'pay_fee',
+                array(
+                    'name' => 'create_time',
+                    'value' => 'date("Y-m-d H:i:s", $data->create_time)',
+                ),
                 array(
                     'name' => 'pay_status',
                     'value' => 'Tbfunction::showPayStatus($data->pay_status)',
