@@ -89,8 +89,30 @@ class Wishlist extends CActiveRecord
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('create_time',$this->create_time,true);
 
+        $criteria->order='wishlist_id desc';
+
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function MyCollectSearch()
+    {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
+
+        $criteria=new CDbCriteria;
+
+        $criteria->compare('wishlist_id',$this->wishlist_id,true);
+        $criteria->compare('user_id',Yii::app()->user->id,true);
+        $criteria->compare('item_id',$this->item_id,true);
+        $criteria->compare('desc',$this->desc,true);
+        $criteria->compare('create_time',$this->create_time,true);
+
+        $criteria->order='wishlist_id desc';
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
+    }
 }
