@@ -62,7 +62,7 @@ Yii::app()->plugin->render('Hook_Login');
             <?php } ?>
         </div>
         <div class="warp_news">
-            <div class="news_tit"><?php echo CHtml::link('更多>>', Yii::app()->createUrl('cms/news/index', array())); ?></div>
+            <div class="news_tit"><?php echo CHtml::link('更多>>', Yii::app()->createUrl('post/index', array())); ?></div>
             <div class="news_c">
                 <div class="news_img">
                     <script>
@@ -81,7 +81,7 @@ Yii::app()->plugin->render('Hook_Login');
                                      $imageHelper=new ImageHelper();
                                             $picUrl=$imageHelper->thumb('180','178',$post->pic_url);
                                             $picUrl=Yii::app()->baseUrl. $picUrl;
-                                            $news=Yii::app()->createUrl("cms/news/$post->id");
+                                            $news=Yii::app()->createUrl("post/view/$post->id");
                                             echo 'box.add({"url": "'. $picUrl.'", "href": "'.$news.'", "title": "'.$post->title.'"});';
                                             $num++;
                                   }
@@ -95,7 +95,7 @@ Yii::app()->plugin->render('Hook_Login');
                     <?php
                     $class = 'current';
                     foreach ($posts as $post) {
-                        echo '<li class="' . $class . '"><a href="' . Yii::app()->createUrl('cms/news/view', array('id' => $post->id)) . '">' . $post->title . '</a></li>';
+                        echo '<li class="' . $class . '"><a href="' . Yii::app()->createUrl('post/view', array('id' => $post->id)) . '">' . $post->title . '</a></li>';
                         $class = '';
                     } ?>
                 </ul>

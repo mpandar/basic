@@ -29,7 +29,7 @@
                 array('label' => '内容管理', 'url' => '#', 'items' => array(
                     array('label' => '内容分类', 'url' => array('/cms/contentCategory/admin')),
                     array('label' => '单页管理', 'url' => array('/cms/page/admin')),
-                    array('label' => '文章管理', 'url' => array('/cms/article/admin')),
+//                    array('label' => '文章管理', 'url' => array('/cms/article/admin')),
                     array('label' => '新闻管理', 'url' => array('/cms/news/admin')),
                     array('label' => '留言管理', 'url' => array('/cms/feedback/admin')),
                     array('label' => 'OTHER'),

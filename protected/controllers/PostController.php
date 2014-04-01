@@ -116,6 +116,7 @@ class PostController extends Controller
 	 */
 	public function actionIndex()
 	{
+        $posts = Post::model()->findAll(new CDbCriteria(array('limit' => 5, 'order' => 'id desc')));
 		$criteria=new CDbCriteria(array(
 			'condition'=>'status='.Post::STATUS_PUBLISHED,
 			'order'=>'update_time DESC',
@@ -133,6 +134,7 @@ class PostController extends Controller
 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+            'posts' => $posts,
 		));
 	}
 
